@@ -21,7 +21,7 @@ This is a simple JWT (JSON Web Token) authentication system built to demonstrate
 
 2. Set up your environment variables (e.g., JWT secret key, database connection string). You can create a .env file with the following contents:
 ```
-PORT=5000
+PORT=3000
 JWT_SECRET=test
 MONGO_URI=mongodb://localhost:27017/jwt-db
 ```

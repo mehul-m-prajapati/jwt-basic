@@ -61,6 +61,7 @@ curl -X POST http://localhost:3000/api/auth/refresh-token   -H "Content-Type: ap
 - **Refresh Token**: Long-lived, used to obtain a new Access Token without re-authentication.
 - **Security**: Refresh Tokens must be stored securely (e.g., HTTP-only cookies or encrypted storage)
 
+### Flow diagram
 ```
 +-------------------+       +-------------------+       +-------------------+
 |  User Login       |       |  Access Token     |       |  Protected        |
@@ -79,5 +80,5 @@ curl -X POST http://localhost:3000/api/auth/refresh-token   -H "Content-Type: ap
 +-------------------+       +-------------------+
 |  Refresh Token    |       |  Re-Authenticate  |
 |  (Long-lived)     | ----> |  (If Refresh Fails)|
-```
 +-------------------+       +-------------------+
+```

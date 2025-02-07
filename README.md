@@ -38,7 +38,6 @@ npm run dev
 
 ```
 # Register a new user
-
 curl -X POST http://localhost:3000/api/auth/signup \
 -H "Content-Type: application/json" \
 -d '{
@@ -51,8 +50,34 @@ curl -X POST http://localhost:3000/api/auth/signup \
 curl -X GET http://localhost:3000/api/dashboard \
 -H "Authorization: your_jwt_token_here"
 
-# Get new Access token by requesting on refresh-token route
+# Get new Access token
 curl -X POST http://localhost:3000/api/auth/refresh-token   -H "Content-Type: application/json"   -d '{
     "refreshToken": "your-refresh-token-here"
 }'
 ```
+
+### Key Points
+- **Access Token**: Short-lived, used for accessing resources.
+- **Refresh Token**: Long-lived, used to obtain a new Access Token without re-authentication.
+- **Security**: Refresh Tokens must be stored securely (e.g., HTTP-only cookies or encrypted storage)
+
+```
++-------------------+       +-------------------+       +-------------------+
+|  User Login       |       |  Access Token     |       |  Protected        |
+|  (Credentials)    | ----> |  (Short-lived)    | ----> |  Resource Access  |
++-------------------+       +-------------------+       +-------------------+
+        |                           |                           |
+        |                           |                           |
+        v                           v                           v
++-------------------+       +-------------------+       +-------------------+
+|  Generate Tokens  |       |  Token Expired    |       |  Validate Token   |
+|  (Access + Refresh)| <---- |  (Access Token)   | <---- |  (Access Token)   |
++-------------------+       +-------------------+       +-------------------+
+        |                           |
+        |                           |
+        v                           v
++-------------------+       +-------------------+
+|  Refresh Token    |       |  Re-Authenticate  |
+|  (Long-lived)     | ----> |  (If Refresh Fails)|
+```
++-------------------+       +-------------------+

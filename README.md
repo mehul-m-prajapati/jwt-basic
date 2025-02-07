@@ -72,13 +72,13 @@ curl -X POST http://localhost:3000/api/auth/refresh-token   -H "Content-Type: ap
         v                           v                           v
 +-------------------+       +-------------------+       +-------------------+
 |  Generate Tokens  |       |  Token Expired    |       |  Validate Token   |
-|  (Access + Refresh)| <---- |  (Access Token)   | <---- |  (Access Token)   |
+|  (Access + Refresh)| <--- |  (Access Token)   | <---- |  (Access Token)   |
 +-------------------+       +-------------------+       +-------------------+
         |                           |
         |                           |
         v                           v
 +-------------------+       +-------------------+
 |  Refresh Token    |       |  Re-Authenticate  |
-|  (Long-lived)     | ----> |  (If Refresh Fails)|
+|  (Long-lived)     | --->  | (If Refresh Fails)|
 +-------------------+       +-------------------+
 ```
